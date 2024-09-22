@@ -3,7 +3,7 @@ FROM nginx:alpine
 # MAINTAINER of the Dockerfile
 MAINTAINER Bikram <bikramatmedium@gmail.com>
 #Copy the index.html file /usr/share/nginx/html/
-COPY html-cuento/* /usr/share/nginx/html/
+COPY html/* /usr/share/nginx/html/
 #Expose Nginx Port
 EXPOSE 80
 #Start NginxService 
