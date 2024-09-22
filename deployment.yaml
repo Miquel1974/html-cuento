@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: html-cuento-deploy
+spec:
+  selector:
+    matchLabels:
+      app: html-cuento
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: html-cuento
+    spec:
+      containers:
+      - name: html-cuento
+        image: 10.233.30.82:8080/html-cuento:pre 
+        ports:
+          - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: html-cuento-service
+  labels:
+    app: html-cuento
+spec:
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+  selector:
+    app: html-cuento
+  type: NodePort
